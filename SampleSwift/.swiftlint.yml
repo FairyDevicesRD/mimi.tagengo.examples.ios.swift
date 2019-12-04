@@ -1,0 +1,7 @@
+
+excluded:
+- Starscream
+- swift-nio-zlib-support
+disabled_rules:
+- line_length
+- trailing_whitespace
