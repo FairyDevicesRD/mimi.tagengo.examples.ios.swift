@@ -1,4 +1,4 @@
-# mimi.example.internal.ios.swift
+# mimi.tagengo.examples.ios.swift
 
 ## Prepare
 
