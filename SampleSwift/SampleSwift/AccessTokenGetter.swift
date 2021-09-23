@@ -85,7 +85,7 @@ class AccessTokenGetter {
 
 func executeAccessTokenGetter() -> String {
     let accessTokenGetter: AccessTokenGetter = AccessTokenGetter(
-        grantType: "https://auth.mimi.fd.ai/grant_type/client_credentials",
+        grantType: "https://auth.mimi.fd.ai/grant_type/application_credentials",
         clientId: appId,
         clientSecret: secret,
         scope: scope

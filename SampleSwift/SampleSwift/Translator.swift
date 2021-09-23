@@ -27,8 +27,9 @@ class Translator {
             URLQueryItem(name: "target_lang", value: self.targetLang)
         ]
         var httpRequest = URLRequest(url: urlComponents.url!)
-        httpRequest.httpMethod = "GET"
+        httpRequest.httpMethod = "POST"
         httpRequest.setValue("Bearer " + gAccessToken, forHTTPHeaderField: "Authorization")
+        httpRequest.httpBody = urlComponents.percentEncodedQuery?.data(using: .utf8)
         let semaphore = DispatchSemaphore(value: 0)
         let task = session.dataTask(with: httpRequest) { data, response, error in
             if let error = error {
@@ -52,6 +53,7 @@ class Translator {
                 if let range = self.resultText.range(of: "\"]") {
                     self.resultText.replaceSubrange(range, with: "")
                 }
+                self.resultText = self.resultText.decodingUnicodeCharacters
                 translateResultText = String(data: data, encoding: .utf8) ?? "no result text"
                 semaphore.signal()
                 
@@ -64,6 +66,10 @@ class Translator {
         }
         task.resume()
         _ = semaphore.wait()
-        return translateResultText
+        return translateResultText.decodingUnicodeCharacters
     }
+}
+
+extension String {
+    var decodingUnicodeCharacters: String { applyingTransform(.init("Hex-Any"), reverse: false) ?? "" }
 }

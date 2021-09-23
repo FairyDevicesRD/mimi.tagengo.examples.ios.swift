@@ -37,9 +37,9 @@ class SpeechSynthesizer: NSObject, AVAudioPlayerDelegate {
             URLQueryItem(name: "gender", value: self.gender)
         ]
         var httpRequest = URLRequest(url: urlComponents.url!)
-        httpRequest.httpMethod = "GET"
+        httpRequest.httpMethod = "POST"
         httpRequest.setValue("Bearer " + gAccessToken, forHTTPHeaderField: "Authorization")
-        
+        httpRequest.httpBody = urlComponents.percentEncodedQuery?.data(using: .utf8)
         let task = session.dataTask(with: httpRequest) { data, response, error in
             // client error
             if let error = error {
