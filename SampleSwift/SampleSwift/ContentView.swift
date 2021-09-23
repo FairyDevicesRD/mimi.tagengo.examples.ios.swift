@@ -7,7 +7,7 @@ import SwiftUI
 
 let appId: String = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" // FIXME:
 let secret: String = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" // FIXME:
-let scope: String = "https://apis.mimi.fd.ai/auth/asr/websocket-api-service;https://apis.mimi.fd.ai/auth/asr/http-api-service;https://apis.mimi.fd.ai/auth/nict-asr/websocket-api-service;https://apis.mimi.fd.ai/auth/nict-asr/http-api-service;https://apis.mimi.fd.ai/auth/nict-tra/http-api-service;https://apis.mimi.fd.ai/auth/nict-tts/http-api-service;https://apis.mimi.fd.ai/auth/google-asr/http-api-service;https://apis.mimi.fd.ai/auth/google-asr/websocket-api-service"
+let scope: String = "https://apis.mimi.fd.ai/auth/nict-asr/websocket-api-service;https://apis.mimi.fd.ai/auth/nict-asr/http-api-service;https://apis.mimi.fd.ai/auth/nict-tra/http-api-service;https://apis.mimi.fd.ai/auth/nict-tts/http-api-service"
 var audioEngine: AVAudioEngine!
 var gAccessToken: String = ""
 private var nowRecording: Bool = false
